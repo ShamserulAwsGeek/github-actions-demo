@@ -15,11 +15,8 @@ jobs:
         with:
           node-version: '14'
 
-      - name: Navigate to project directory
-        run: cd github-actions-demo
-
       - name: Install dependencies
-        run: npm install
+        run: npm install --prefix ./github-actions-demo
 
       - name: Run tests
-        run: npm test
+        run: npm test --prefix ./github-actions-demo
