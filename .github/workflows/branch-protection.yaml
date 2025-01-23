@@ -1,0 +1,29 @@
+name: Branch Protection
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  enforce-branch-protection:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Create branch protection rule
+        uses: octokit/request-action@v2.x
+        with:
+          route: PUT /repos/:owner/:repo/branches/:branch/protection
+          owner: ${{ github.repository_owner }}
+          repo: ${{ github.event.repository.name }}
+          branch: main
+          required_status_checks:
+            strict: true
+            contexts: []
+          enforce_admins: true
+          required_pull_request_reviews:
+            required_approving_review_count: 1
+          restrictions: null
