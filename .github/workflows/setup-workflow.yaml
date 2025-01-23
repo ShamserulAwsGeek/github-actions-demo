@@ -1,9 +1,9 @@
-name: Setup Workflow
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -16,7 +16,7 @@ jobs:
           node-version: '14'
 
       - name: Install dependencies
-        run: npm install --prefix ./ 
+        run: npm install
 
       - name: Run tests
-        run: npm test --prefix ./
+        run: npm test
