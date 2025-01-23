@@ -1,9 +1,9 @@
-name: Setup Workflow
+name: CI
 
 on: [push, pull_request]
 
 jobs:
-  setup:
+  build:
     runs-on: ubuntu-latest
 
     steps:
